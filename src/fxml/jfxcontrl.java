@@ -11,10 +11,8 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
-
-import java.awt.*;
 
 public class jfxcontrl implements Initializable {
 
@@ -22,7 +20,7 @@ public class jfxcontrl implements Initializable {
     private Button okButton;
 
         @FXML
-    private Button dataTimeLabel;
+    private Label dataTimeLabel;
 
 
         @Override
@@ -30,7 +28,7 @@ public class jfxcontrl implements Initializable {
 
         // TODO (don't really need to do anything here).
     }
-        public void setDataTimeLabel(ActionEvent event){
+        public void setDataTimeLabel(){
             System.out.println("Hello World");
 
             Date now = new Date();
@@ -40,4 +38,9 @@ public class jfxcontrl implements Initializable {
 
             dataTimeLabel.setText(dateTimeString);
         }
+
+    public void close(ActionEvent actionEvent) {
+        setDataTimeLabel();
+            //System.exit(0);
+    }
 }
