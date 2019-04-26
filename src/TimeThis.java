@@ -1,7 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,27 +23,38 @@ public class TimeThis {
 
             dataTime = format.parse(time);
 
-        } catch (FileNotFoundException | ParseException e) {
+        } catch (FileNotFoundException e){
 
+            dataTime = write();
 
+        } catch (ParseException e) {
 
-            dataTime = new Date();
+            File file = new File("Time.txt");
+            file.delete();
 
-            time = dataTime.toString();
-
-          try{  FileWriter fw = new FileWriter("Time.txt");
-            fw.write(time);
-
-            fw.close(); }catch (IOException ex){ex.printStackTrace();}
+            dataTime = write();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
         return dataTime;
 
     }
+
+    private Date write(){
+        Date dataTime = new Date();
+
+        String time = dataTime.toString();
+
+        try{  FileWriter fw = new FileWriter("Time.txt");
+            fw.write(time);
+
+            fw.close(); }catch (IOException ex){ex.printStackTrace();}
+
+        return dataTime;
+    }
+
         public Date getTime(){
         return startTimeToGoal();
     }
