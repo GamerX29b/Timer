@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -31,10 +32,22 @@ public class jfxcontrl implements Initializable {
         public void setDataTimeLabel(){
             System.out.println("Hello World");
 
-            Date now = new Date();
-            DateFormat df = new SimpleDateFormat("dd.mm.yyyy");
+            Date WhatDayIsToday = new Date();
+            Calendar thisCalendar = Calendar.getInstance();
+            Calendar dammitCalendar = Calendar.getInstance();
+            TimeThis th = new TimeThis();
+            Date dammitDate = th.getTime();
+            thisCalendar.setTime(WhatDayIsToday);
+            dammitCalendar.setTime(dammitDate);
 
-            String dateTimeString = df.format(now);
+
+            long time = thisCalendar.getTimeInMillis()- dammitCalendar.getTimeInMillis();
+            long dammitDay = (((time/1000)/60)/60)/24;
+            long dammitHour = ((time/1000)/60)/60;
+
+
+            String dateTimeString = String.valueOf(dammitDay) + " дней прошло "; //df.format(dammit);
+
 
             dataTimeLabel.setText(dateTimeString);
         }

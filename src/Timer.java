@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.util.*;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +17,17 @@ public class Timer extends Application {
             stage.setTitle("Timer");
             stage.setScene(new Scene(root));
             stage.show();
+
     }
+
+
 
     public static void main(String[] args){
 
+        ArrayList ik = new ArrayList();
+
         launch(args);
 
-        TimeThis th = new TimeThis();
-        Date dammit = th.getTime();
+
     }
 }

@@ -1,8 +1,16 @@
+package fxml;
+
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
+import java.util.Locale;
+
+/*
+Класс указывает время с которого надо вести отчёт. Время берётся из файла.
+Если файла нет, он создаётся с текущей датой и временем. Его надо отредактировать.
+ */
+
 
 public class TimeThis {
 
@@ -15,11 +23,13 @@ public class TimeThis {
 
         try {
             FileReader fr = new FileReader("Time.txt");
-            Scanner scan = new Scanner(fr);
-            time = scan.toString();
+            BufferedReader read = new BufferedReader(fr);
+            time = read.readLine();
             fr.close();
 
-            SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
+            System.out.println(time);
+
+            SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
 
             dataTime = format.parse(time);
 
